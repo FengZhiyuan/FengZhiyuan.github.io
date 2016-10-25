@@ -164,6 +164,7 @@ var bindEventNav = function() {
     }
     // projects
     var bindEventProject = function() {
+        // 切换页面
         var projects = function() {
             var p = `
                 <div class="div-project col-xs-12  col-sm-12 col-md-12">
@@ -210,6 +211,8 @@ var bindEventNav = function() {
             position.empty()
             position.append(projects())
         })
+        // 留言板
+
     }
 
     bindEventHome()
@@ -235,14 +238,6 @@ var bindEventAside = function() {
             $('.btn-project').click()
         })
     }
-    //
-    var bindEventXXX = function() {
-        $('.aside-btn-*').on('click', function(event) {
-            $('.btn-*').click()
-        })
-    }
-
-
 
     bindEventActive()
     bindEventIntro()
