@@ -1,0 +1,303 @@
+.vertical-center {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+}
+body {
+    background-color: lightgray;
+}
+.container {
+    /*background-color: white;*/
+}
+/*页眉*/
+header {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    height: 50px;
+    /*outline: 1px solid red;*/
+    padding: 0;
+    /*margin-bottom: 1px;*/
+}
+.div-header {
+    position: relative;
+    width: 80%;
+    height: 50px;
+
+    margin: 0 auto;
+    /*outline: 1px solid white;*/
+}
+.p-header {
+    display: inline-block;
+    color: white;
+    font-size: 180%;
+    font-weight: bolder;
+    padding: 5px;
+    margin: 0 15px 0 3%;
+}
+.div-hearder-img {
+    display: inline-block;
+    position: absolute;
+    width: 80%;
+    top: 50%;
+    transform: translateY(-50%);
+}
+.img-header {
+    position: relative;
+    animation: rotate_move 10s infinite;
+    -moz-animation: rotate_move 10s infinite;
+    -webkit-animation: rotate_move 10s infinite;
+    animation-direction: alternate;
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+}
+
+
+/*旋转平移*/
+@keyframes rotate_move {
+    0% {
+        left: 0;
+        transform: rotate(0deg);
+    }
+    100% {
+        left: 100%;
+        transform: rotate(3600deg);
+    }
+}
+
+/*导航*/
+.nav {
+    margin: 10px auto auto auto;
+    background-color: white;
+    border-radius: 5px;
+}
+.div-anchor {
+    padding: 0;
+    margin: 10px auto;
+    border-radius: 5px;
+    /*border: 1px solid black;*/
+}
+
+.div-home {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 10px;
+}
+.p-home-welcome {
+    /*border: 1px solid blue;*/
+    background-color: #377BB5;
+    color: white;
+    text-align: center;
+    width: 95%;
+    margin: 10px auto;
+    padding: 20px 15px;
+    font-size: 150%;
+    font-weight: bold;
+    border-radius: 5px;
+    line-height: 35px;
+}
+
+.span-welcome-name {
+    font-size: 135%;
+}
+.span-welcome-other {
+    font-size: 120%;
+}
+
+.div-home-show {
+    position: relative;
+    width: 100%;
+    margin: 10px auto;
+    border-radius: 5px;
+    padding: 10px 0;
+    text-align: center;
+    /*border: 1px solid black;*/
+}
+.div-show-img {
+    display: inline-block;
+    width: 46%;
+    border-radius: 5px;
+    margin: 1%;
+    /*border: 1px solid black;*/
+
+    /*padding: 1%;*/
+}
+.img-home-show {
+    position: relative;
+    width: 100%;
+    border-radius: 5px;
+    /*border: 1px solid black;*/
+
+    /*border: 1px solid #377BB5;*/
+}
+
+
+
+
+/*project*/
+.div-project {
+    position: relative;
+    padding: 10px;
+    /*border: 1px solid black;*/
+    margin: 0 auto;
+    background-color: white;
+    border-radius: 5px;
+
+}
+.div-project h4 {
+    width: 90%;
+    margin: 15px auto;
+}
+.project {
+    position: relative;
+    width: 90%;
+    margin: 20px auto;
+    /*background-color: #99d6ff;*/
+    border-radius: 5px;
+    padding: 5px 10px;
+    border-bottom: 1px dashed black;
+
+}
+.project-title {
+    font-size: 120%;
+    font-weight: bold;
+}
+.project-img {
+    width: 100%;
+    border-radius: 5px;
+
+}
+.project p {
+    padding: 5px;
+    margin: 0;
+}
+
+.intro {
+    animation: rotate 1s infinite;
+    -moz-animation: rotate 1s infinite;
+    -webkit-animation: rotate 1s infinite;
+    animation-timing-function: cubic-bezier(1, 1, 1, 1);
+
+}
+/*旋转*/
+@keyframes rotate {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(180deg);
+    }
+}
+
+
+/*简历*/
+/*个人信息*/
+.div-resume {
+    padding: 0;
+    border-radius: 5px;
+}
+.div-resume-head {
+    position: relative;
+    text-align: left;
+    padding: 15px;
+    color: white;
+    background-color: black;
+}
+.div-resume ul {
+    display: inline-block;
+    padding: 2px;
+    font-size: 120%;
+    font-weight: 500;
+    margin: 0 0 0 10px;
+}
+.div-resume ul li {
+    list-style: none;
+    margin: 1px 0;
+    }
+.div-resume-name {
+    position: absolute;
+    right: 10px;
+    display: inline-block;
+    height: 100%;
+    margin: 0 10px 0 0;
+    padding: 2px;
+}
+.span-resume-name {
+    text-align: right;
+    display: block;
+    font-size: 260%;
+    font-weight: bolder;
+}
+.span-resume-job {
+    text-align: right;
+    display: block;
+    font-size: 110%;
+    font-weight: bold;
+}
+/*技能*/
+.div-resume-skill {
+    background-color: white;
+    padding: 20px;
+}
+.p-resume-skill {
+    font-size: 150%;
+    font-weight: 500;
+    margin-left: 10px;
+}
+.p-skill {
+    /*border: 1px solid blue;*/
+    margin: 2px 2px 0 10px;
+}
+.span-skill-title {
+    font-size: 120%;
+    font-weight: bold;
+    margin-top: 5px;
+}
+.p-skill-detail {
+    margin: 2px 2px 0 10px;
+    /*border: 1px solid blue;*/
+}
+.span-skill-hl {
+    color: #377BB5;
+    font-size: 105%;
+    font-weight: bold;
+}
+.resume-thx {
+    margin: 15px 0 0 10px;
+    font-size: 110%;
+    font-weight: bold;
+}
+
+
+/*边栏*/
+.div-aside {
+    margin: 10px auto;
+    background-color: lightgray;
+    /*border: 1px solid blue;*/
+    padding: 0 0 0 10px;
+}
+.div-contact {
+    width: 100%;
+    background-color: white;
+    border-radius: 5px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+}
+.div-contact h5 {
+    font-size: 110%;
+}
+.aside-btns {
+    border-radius: 5px;
+    /*border: 1px solid blue;*/
+}
+
+
+footer {
+    position: relative;
+    background-color: black;
+    width: 100%;
+    /*margin: auto 10px;*/
+}
