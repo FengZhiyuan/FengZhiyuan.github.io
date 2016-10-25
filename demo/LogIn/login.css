@@ -1,0 +1,161 @@
+body {
+    background-color: #66ccff;
+    position: relative;
+    text-align: center;
+    background-repeat: no-repeat;
+    background-image: url(http://img.hb.aicdn.com/e36e05cd3fdb929d6bdfc0d8b7aa06918755bba8c520-2MWl6I_fw658);
+    background-size: cover;
+}
+
+.div-main {
+    position: relative;
+
+}
+
+/*标题*/
+.div-title {
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-top: 40px;
+    width: 80%;
+    left: 10%;
+}
+
+/*用来放置登录框*/
+.div-login {
+    position: relative;
+    /*background-color: red;*/
+    margin-top: 30px;
+    /*width: 80%;*/
+    /*left: 10%;*/
+}
+
+/*登录框主体*/
+.div-login-main {
+    position: relative;
+    background-color: white;
+    margin-left: auto;
+    margin-right: auto;
+    width: 370px;
+    height: 380px;
+    border: 1px solid white;
+    border-radius: 5px;
+ }
+
+/*Log In*/
+ .div-login-title {
+     position: relative;
+     margin: 40px auto auto auto;
+     /*border: 1px solid blue;*/
+
+ }
+
+ #id-span-title {
+     position: relative;
+     color: #565656;
+     margin-top: 40px;
+     font-size: 35px;
+     /*border: 1px solid blue;*/
+ }
+
+
+/*用户名、密码输入框*/
+ .div-login-input {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 16px;
+ }
+
+ #id-input-name {
+     position: relative;
+     /*color: gray;*/
+     margin-bottom: 8px;
+     border: 2px solid lightgray;
+     border-radius: 5px;
+     padding: 2px 8px 2px 8px;
+     width: 260px;
+     height: 50px;
+     font-size: 22px;
+ }
+
+ #id-input-password {
+     position: relative;
+     /*color: gray;*/
+     margin-top: 8px;
+     border: 2px solid lightgray;
+     border-radius: 5px;
+     padding: 2px 8px 2px 8px;
+     width: 260px;
+     height: 50px;
+     font-size: 22px;
+ }
+
+
+/*登录按钮*/
+ .div-login-button {
+     position: relative;
+     margin-left: auto;
+     margin-right: auto;
+     /*width: 250px;
+     height: 40px;*/
+ }
+
+ #id-button-login {
+     position: relative;
+     background-color: #1b2a47;
+     color: white;
+     margin: auto;
+     border: none;
+     border-radius: 5px;
+     width: 276px;
+     height: 58px;
+     font-size: 22px;
+ }
+
+
+/*用户名错误警告*/
+.h1-login-warn {
+    position: relative;
+    text-align: center;
+    color: red;
+    font-size: 15px;
+    font-weight: 100;
+}
+
+.div-login-warn {
+}
+
+.warn-hide {
+    display: none;
+}
+
+
+/*注册*/
+.div-login-signup {
+    position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 16px;
+    width: 370px;
+    font-weight: border;
+}
+
+#id-span-signup {
+    position: relative;
+    color: white;
+}
+
+#id-span-signup {
+    color: white;
+}
+
+a:link {
+    color: white;
+    font-weight: bold;
+}
+a:visited {
+    color: black;
+    font-weight: bolder;
+}

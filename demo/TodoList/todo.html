@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Todo List</title>
+        <link rel="stylesheet" href="todo.css" media="screen" title="no title">
+    </head>
+    <body>
+        <div class="div-todo">
+            <div class="todo-title">
+                <span id='id-span-title'>Todo List</span>
+            </div>
+            <div class="todo-main">
+                <!-- 输入框 -->
+                <div class="todo-form">
+                    <input type="text" id='id-input-add' value="">
+                    <button id='id-button-add'>Add</button>
+                </div>
+
+                <!-- 待办列表 -->
+                <div id='id-div-container'>
+                    <!-- 列表框 -->
+                    <div class="todo-cell">
+                        <input type="checkbox" class='todo-done button-cell checkbox-done'>
+                        <input name="submit" type="image" value=" " src="http://i.imgur.com/S5oaKDs.png"  class='todo-edit button-cell'>
+                        <input name="submit" type="image" value=" "  src="http://i.imgur.com/xh3mmCk.png"class='todo-delete button-cell'>
+                        <span contenteditable='false' class='todo-id'>0</span>
+                        <span contenteditable='false' class='todo-task'>1842年8月 苟利国家生死以，岂因祸福避趋之。<span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <script type="text/javascript" src='todo.js'></script>
+    </body>
+</html>

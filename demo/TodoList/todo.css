@@ -1,0 +1,128 @@
+body {
+    background-color: #cc99ff;
+}
+
+.div-todo {
+    background-color: white;
+    width: 820px;
+    padding: 10px;
+    padding-bottom: 25px;
+    border-radius: 4px;
+    margin: 30px auto;
+}
+
+/*标题模块*/
+.todo-title{
+    position: relative;
+    width: 800px;
+    text-align: left;
+    margin: 5px auto 5px auto;
+    font-size: 30px;
+    font-family: Helvetica;
+}
+
+#id-span-title {
+    position: relative;
+}
+
+/*tudo主体*/
+.todo-main {
+    background: white;
+    position: relative;
+    border: 1px solid white;
+    width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/*输入模块*/
+.todo-form {
+    position: relative;
+    background-color: #cc99ff;
+    border: 1px solid #cc99ff;
+    border-radius: 2px;
+}
+/*输入框*/
+#id-input-add {
+    position: relative;
+    margin: 3px 3px 3px 3px;
+    border: 1px solid #cc99ff;
+    border-radius: 3px;
+    width: 725px;
+    height: 22px;
+}
+/*ADD按钮*/
+#id-button-add{
+    position: relative;
+    width: 52px;
+    height: 26px;
+    background: white;
+    border: 1px solid gray;
+    border-radius: 2px;
+}
+
+/*列表模块*/
+#id-div-container {
+    position: relative;
+    margin: 1% auto auto auto;
+    border-radius: 2px;
+}
+/*todo cell*/
+.todo-cell {
+    position: relative;
+    background-color: lightgray;
+    text-align: left;
+    height: 28px;
+    line-height: 22px;
+    margin-top: 3px;
+    border: 1px solid lightgray;
+    vertical-align: middle;
+}
+/*buttons*/
+.button-cell{
+    position: relative;
+}
+/*done*/
+.checkbox-done {
+    position: relative;
+    margin: 5px auto auto 6px;
+    width: 19px;
+    height: 19px;
+    top: 0px;
+
+}
+/*edit*/
+.todo-edit {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-top: 6px;
+    margin-left: 0px;
+    left: -2px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+/*delete*/
+.todo-delete {
+    position: relative;
+    width: 15px;
+    height: 15px;
+    margin-top: 6px;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+/*task*/
+.todo-task {
+    position: relative;
+    top: -2px;
+}
+
+/*完成后加删除线*/
+.done {
+    /*增加删除线*/
+    text-decoration: line-through;
+}
+
+.todo-id {
+    display: none;
+}
