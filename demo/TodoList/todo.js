@@ -1,7 +1,3 @@
-var log = function() {
-    console.log.apply(console, arguments)
-}
-
 // class开关
 var toggleClass = function(element, cls) {
     if (element.classList.contains(cls)) {
