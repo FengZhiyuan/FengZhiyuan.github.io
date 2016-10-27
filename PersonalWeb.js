@@ -63,8 +63,8 @@ var bindEventNav = function() {
             <div class="div-resume col-xs-12 col-sm-12">
                 <!-- 个人信息 -->
                 <div class="div-resume-head">
-                    <ul classs="vertical-center col-xs-8">
-                                <li>
+                    <ul classs="vertical-center col-xs-12">
+                        <li>
                             <span class="glyphicon glyphicon-phone"></span>
                             电话：186 5919 0802
                         </li>
@@ -77,7 +77,7 @@ var bindEventNav = function() {
                             GitHub：<a href="https://github.com/FengZhiyuan">https://github.com/FengZhiyuan</a>
                         </li>
                     </ul>
-                    <div class="div-resume-name col-xs-4">
+                    <div class="div-resume-name col-xs-12">
                         <span class="span-resume-name">冯志远</span>
                         <span class="span-resume-job">前端工程师</span>
                     </div>
