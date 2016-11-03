@@ -133,7 +133,7 @@ var bindEventNav = function() {
                             熟悉 <span class='span-skill-hl'>BootStrap/Pure</span> 等常见库的运用
                         </p>
                         <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
-                            对 <span class='span-skill-hl'>React/Node.js</span> 等常见技术有一定了解
+                            对 <span class='span-skill-hl'>Node.js</span> 等常见技术有一定了解
                         </p>
                     </p>
 
@@ -146,9 +146,29 @@ var bindEventNav = function() {
                         <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
                             能够使用 <span class='span-skill-hl'>Photoshop</span> 完成简单的设计
                         </p>
-
-                        <h5 class='resume-thx'>感谢花时间阅读我的简历，期待与您共事</p>
                     </p>
+
+                    <p class="p-skill">
+                        <span class="span-skill-title">个人项目</span>
+
+                        <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
+                            移动端全功能音乐播放器
+                        </p>
+                        <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
+                            留言板
+                        </p>
+                        <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
+                            轮播图
+                        </p>
+                        <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
+                            TodoList
+                        </p>
+                        <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
+                            LogIn
+                        </p>
+                    </p>
+                    <h5 class='resume-thx'>感谢花时间阅读我的简历，期待与您共事</p>
+
                 </div>
             </div>
             `
