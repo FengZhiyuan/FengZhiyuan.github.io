@@ -468,11 +468,12 @@ var bindEventNav = function() {
 
                         .div-insert-container {
                             position: relative;
-                            width: 600px;
+                            width: 100%;
                         }
 
                         .div-insert {
                             border-bottom: 1px dashed gray;
+                            width: 100%;
                             margin: 5px 0;
                         }
 
@@ -494,7 +495,7 @@ var bindEventNav = function() {
                             display: inline-block;
                             text-align: left;
                             margin-left: 2px;
-                            width: 525px;
+                            width: 80%;
                             margin: 3px;
                             font-size: 85%;
                         }
