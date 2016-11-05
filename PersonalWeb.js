@@ -234,7 +234,6 @@ var bindEventNav = function() {
         // 留言板
         $('.btn-messageBoard').on('click', function(event) {
             // 留言板
-            log('click mb')
             var messageBoard = function(position) {
                 // 当前时间
                 var currentTime = function() {
@@ -304,7 +303,7 @@ var bindEventNav = function() {
                     var t = `
                         <div class="div-insert">
                             <div class="div-img">
-                                <img width=50 height=50 src="${img}" alt="头像" />
+                                <img class="mb-head-img" width=50 height=50 src="${img}" alt="头像" />
                             </div>
                             <div class="div-comments">
                                 <p class="p-comment-name">${name}</p>
@@ -326,7 +325,7 @@ var bindEventNav = function() {
                                     <input class="input-name" type="input" placeholder="请输入昵称" name="name" value="">
                                 </div>
                                 <div class="div-name-img">
-                                    <img class="img-chose active-img" src="http://www.jf258.com/uploads/2015-05-14/190205140.jpg" alt="" />
+                                    <img class="img-chose  active-img" src="http://www.jf258.com/uploads/2015-05-14/190205140.jpg" alt="" />
                                     <img class="img-chose" src="http://picview01.baomihua.com/photos/20120708/m_14_634773404838750000_37844128.jpg" alt="" />
                                     <img class="img-chose" src="http://img4.duitang.com/uploads/blog/201508/23/20150823180803_PXcW2.thumb.700_0.jpeg" alt="" />
                                     <img class="img-chose" src="http://www.duoziwang.com/2016/10/02/1453262447.jpg" alt="" />
@@ -350,7 +349,7 @@ var bindEventNav = function() {
                                 <!-- insert -->
                                 <div class="div-insert">
                                     <div class="div-img">
-                                        <img width=50 height=50 src="http://www.xueshiboke.com/zb_users/upload/2016/08/201608131471067436568880.jpg" alt="头像" />
+                                        <img class="mb-head-img" width=50 height=50 src="http://www.xueshiboke.com/zb_users/upload/2016/08/201608131471067436568880.jpg" alt="头像" />
                                     </div>
                                     <div class="div-comments">
                                         <p class="p-comment-name">林则徐</p>
@@ -415,6 +414,7 @@ var bindEventNav = function() {
 
                         .active-img {
                             border: 1px solid black;
+                            border-radius: 2px;
                         }
 
                         textarea {
@@ -485,7 +485,7 @@ var bindEventNav = function() {
                             margin-right: 0;
                         }
 
-                        img {
+                        .mb-head-img {
                             border: 1px solid lightgray;
                             border-radius: 3px;
                         }
