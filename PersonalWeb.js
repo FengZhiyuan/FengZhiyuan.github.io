@@ -92,10 +92,10 @@ var bindEventNav = function() {
                     <p class="p-skill">
                         <span class="span-skill-title">HTML/CSS</span>
                         <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
-                            能够编写语义化的 <span class='span-skill-hl'>HTML</span>，模块化的 <span class='span-skill-hl'>CSS</span>，实现常用的布局与动画
+                            能够编写语义化的 <span class='span-skill-hl'>HTML</span>，熟练使用 <span class='span-skill-hl'>DIV+CSS</span> 实现常用的布局与动画
                         </p>
                         <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
-                            熟悉标准化的 <span class='span-skill-hl'>HTML5/CSS3</span> 新特性，实验项目中能尝试使用位为泛使用的新标准
+                            熟悉标准化的 <span class='span-skill-hl'>HTML5/CSS3</span> 新特性，实验项目中能尝试使用未广泛使用的新标准
                         </p>
                     </p>
 
@@ -152,7 +152,7 @@ var bindEventNav = function() {
                         <span class="span-skill-title">个人项目</span>
 
                         <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
-                            移动端全功能音乐播放器
+                            移动端音乐播放器
                         </p>
                         <p class="p-skill-detail"><span class="glyphicon glyphicon-star"></span>
                             留言板
