@@ -65,7 +65,7 @@ var bindEventNav = function() {
                     <ul classs="vertical-center col-xs-12">
                         <li>
                             <span class="glyphicon glyphicon-phone"></span>
-                            电话：186 5919 0802
+                            电话：176 0503 0818
                         </li>
                         <li>
                             <span class="glyphicon glyphicon-envelope"></span>
