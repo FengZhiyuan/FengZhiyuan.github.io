@@ -11,7 +11,10 @@ class FaceAuthentication {
         return new this()
     }
 
+
     init() {
+        this.setup()
+
         window.onload = () => {
             try {
                 // 动态创建一个canvas元 ，并获取他2Dcontext。如果出现异常则表示不支持
@@ -24,6 +27,21 @@ class FaceAuthentication {
                 document.getElementById("support").innerHTML = "浏览器不支持HTML5 CANVAS"
             }
         };
+    }
+
+    setup() {
+        const url = new URL(location.href)
+        const searchParams = url.searchParams
+
+        const width = searchParams.get('width')
+        if (width) {
+            this.width = width
+        }
+
+        const height = searchParams.get('height')
+        if (height) {
+            this.height = height
+        }
     }
 
     initCamera() {
