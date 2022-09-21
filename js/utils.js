@@ -1,5 +1,7 @@
 const log = console.log.bind(console)
 
+const $ = document.querySelector.bind(document)
+
 const Ajax = function(request) {
     let req = {
         url: request.url,
