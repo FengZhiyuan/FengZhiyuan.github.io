@@ -8,30 +8,28 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
         <meta name="format-detection" content="telephone=no, email=no">
         <meta name="HandheldFriendly" content="true" />
-        <link rel="stylesheet" href="./index.css">
-        <script src="./utils.js"></script>
+        <link rel="stylesheet" href="css/index.css">
+        <script src="js/utils.js"></script>
+        <script src="js/rem.js"></script>
     </head>
 
     <body>
-        <h1>html5调用摄像头并拍照</h1>
+        <h5>html5调用摄像头并拍照</h5>
 
-        <h3 id="support"></h3>
+        <h5 id="support"></h5>
 
         <div class="div-main">
-            <div class="div-video-wrapper dev">
-                <video id="video"></video>
+            <div class="div-video-wrapper">
+                <video id="video" width="320" height="240"></video>
             </div>
 
             <button id="snap" >拍照</button>
 
-            <canvas id="canvas" style="display:none" width="320" height="320"></canvas>
+            <canvas id="canvas" style="display:none" width="320" height="240"></canvas>
 
             <div id="photo"></div>
 
-            <h4>获取的base64位PNG图像</h4>
-            <textarea id="text"></textarea>
-
         </div>
-        <script src="./index.js"></script>
+        <script src="js/index.js"></script>
     </body>
 </html>
