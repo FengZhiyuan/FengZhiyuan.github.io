@@ -70,7 +70,7 @@ class FaceAuthentication {
     }
 
     takePhoto() {
-        alert(`canvas wh ${this.video.videoWidth} ${this.video.videoHeight}`)
+        alert(`video wh ${this.video.videoWidth} ${this.video.videoHeight}`)
 
         this.context.drawImage(this.video, 0, 0, this.width, this.height);
         const imgData = this.canvas.toDataURL('image/jpeg')
