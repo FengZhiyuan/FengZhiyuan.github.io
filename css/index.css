@@ -67,10 +67,10 @@ h1 {
 #photo{
     display: inline-block;
     width:320px;
-    height:240px;
+    height:320px;
     margin: 0 auto;
     background-repeat:no-repeat;
-    background:#000
+    background-size:contain;
 }
 
 #text{
