@@ -9,23 +9,27 @@
         <meta name="format-detection" content="telephone=no, email=no">
         <meta name="HandheldFriendly" content="true" />
         <link rel="stylesheet" href="./index.css">
+        <script src="./utils.js"></script>
     </head>
 
     <body>
         <h1>html5调用摄像头并拍照</h1>
+
         <h3 id="support"></h3>
 
-        <video id="video" width="320" height="320"></video>
+        <div class="div-main">
+            <video id="video" width="320" height="320"></video>
 
-        <button id="snap" >拍照</button>
+            <button id="snap" >拍照</button>
 
-        <canvas id="canvas" style="display:none" width="320" height="320"></canvas>
+            <canvas id="canvas" style="display:none" width="320" height="320"></canvas>
 
-        <div id="photo"></div>
+            <div id="photo"></div>
 
-        <h4>获取的base64位PNG图像</h4>
-        <textarea id="text"></textarea>
+            <h4>获取的base64位PNG图像</h4>
+            <textarea id="text"></textarea>
 
+        </div>
         <script src="./index.js"></script>
     </body>
 </html>
