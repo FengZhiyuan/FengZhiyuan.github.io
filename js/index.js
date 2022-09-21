@@ -65,15 +65,16 @@ class FaceAuthentication {
     bindEventSnap() {
         document.getElementById("id-js-button-snap").onclick = () => {
             this.takePhoto()
-            layer.msg('拍照完成')
+            // layer.msg('拍照完成')
         }
     }
 
     takePhoto() {
+        alert(`canvas wh ${this.canvas.width} ${this.canvas.height}`)
+
         this.context.drawImage(this.video, 0, 0, this.width, this.height);
         const imgData = this.canvas.toDataURL('image/jpeg')
-        log('imgData length ', imgData.length)
-        document.getElementById("photo").style.backgroundImage = `url(${imgData})`;
+        document.getElementById("photo").style.backgroundImage = `url(${imgData})`
     }
 
     playVideoByStream(stream) {
