@@ -11,25 +11,36 @@
         <link rel="stylesheet" href="css/index.css">
         <script src="js/utils.js"></script>
         <script src="js/rem.js"></script>
+<!--        layui -->
+        <script src="https://layui.itze.cn/layui-v2.6.8/layui/layui.js
+"></script>
+        <link rel="stylesheet" href="https://layui.itze.cn/layui-v2.6.8/layui/css/layui.css
+">
     </head>
 
     <body>
-        <h5>html5调用摄像头并拍照</h5>
-
         <h5 id="support"></h5>
 
-        <div class="div-main">
-            <div class="div-video-wrapper">
-                <video id="video" width="320" height="240"></video>
+        <div class="div-face-authentication text-align-center">
+            <h1 class="h1-page-title">中信银行股份有限公司呼和浩特分行腾飞路支行办公家具采购</h1>
+
+            <div class="div-subtitle">人脸身份验证</div>
+
+            <div class="div-main">
+                <div class="div-video-wrapper">
+                    <video id="video" width="320" height="240"></video>
+                </div>
+
+                <div class="div-button-wrapper">
+                    <button id="id-js-button-snap">拍照识别</button>
+                </div>
+
+                <canvas id="canvas" style="display:none" width="320" height="240"></canvas>
+
+                <div id="photo"></div>
             </div>
-
-            <button id="snap" >拍照</button>
-
-            <canvas id="canvas" style="display:none" width="320" height="240"></canvas>
-
-            <div id="photo"></div>
-
         </div>
+
         <script src="js/index.js"></script>
     </body>
 </html>

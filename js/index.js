@@ -3,6 +3,8 @@ class FaceAuthentication {
         this.canvas = document.getElementById("canvas")
         this.context = this.canvas.getContext("2d")
         this.video = document.getElementById("video");
+        this.width = 320
+        this.height= 240
     }
 
     static new() {
@@ -12,10 +14,8 @@ class FaceAuthentication {
     init() {
         window.onload = () => {
             try {
-                //动态创建一个canvas元 ，并获取他2Dcontext。如果出现异常则表示不支持
+                // 动态创建一个canvas元 ，并获取他2Dcontext。如果出现异常则表示不支持
                 document.createElement("canvas").getContext("2d")
-                //
-                // document.getElementById("support").innerHTML = "浏览器支持HTML5 CANVAS"
                 //
                 this.bindEvents()
                 this.initCamera()
@@ -45,20 +45,21 @@ class FaceAuthentication {
     }
 
     bindEventSnap() {
-        document.getElementById("snap").onclick = () => {
+        document.getElementById("id-js-button-snap").onclick = () => {
             this.takePhoto()
+            layer.msg('拍照完成')
         }
     }
 
     takePhoto() {
-        this.context.drawImage(this.video, 0, 0, 320, 240);
+        this.context.drawImage(this.video, 0, 0, this.width, this.height);
         const imgData = this.canvas.toDataURL('image/jpeg')
+        log('imgData length ', imgData.length)
         document.getElementById("photo").style.backgroundImage = `url(${imgData})`;
     }
 
     playVideoByStream(stream) {
         const video = this.video
-        // Set the source of the video element with the stream from the camera
         if (video.mozSrcObject !== undefined) {
             video.mozSrcObject = stream;
         } else {
