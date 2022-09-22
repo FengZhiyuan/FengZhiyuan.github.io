@@ -23,22 +23,13 @@ function showSize(base64url) {
     return size
 }
 
-function isIosSystem() {
-    //获取浏览器的userAgent,并转化为小写
-    var ua = navigator.userAgent.toLowerCase()
-    //判断是否是苹果手机，是则是true
-    var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1)
-    return isIos
-}
-
 class Base {
     static new() {
         return new this()
     }
 }
 
-
-class FaceAuthenticationAndroid extends Base {
+class FaceAuthentication extends Base {
     constructor() {
         super()
         this.canvas = document.getElementById("canvas")
@@ -113,7 +104,16 @@ class FaceAuthenticationAndroid extends Base {
 
         this.context.drawImage(this.video, 0, 0, videoWidth, videoHeight)
 
-        const imgData = this.canvas.toDataURL('image/jpeg', 0.8)
+        // 根据不同系统配置图片质量，也可从请求中取值
+        const defaultQuality = 0.8
+        let quality = this.isIosSystem() ? 0.5 : defaultQuality
+        const qualityFromQuery = this.searchParamsOfPage().get('quality')
+        const qualityFromQueryNumber = Number(qualityFromQuery)
+        if (qualityFromQuery && qualityFromQueryNumber > 0 && qualityFromQueryNumber <= 0.92) {
+            quality = qualityFromQueryNumber
+        }
+        //
+        const imgData = this.canvas.toDataURL('image/jpeg', quality)
 
         const size = showSize(imgData)
         document.getElementById("photo").style.backgroundImage = `url(${imgData})`
@@ -136,22 +136,21 @@ class FaceAuthenticationAndroid extends Base {
         alert('错误代码: [CODE ' + error.code + ']')
     }
 
-}
-
-class FaceAuthenticationIOS extends Base {
-    constructor() {
-        super()
+    isIosSystem() {
+        //获取浏览器的userAgent,并转化为小写
+        const ua = navigator.userAgent.toLowerCase()
+        //判断是否是苹果手机，是则是true
+        const result = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1)
+        return result
     }
-    init() {
-        log('ios init')
-        const items = document.querySelectorAll('.wrapper-ios')
-        log("items ", items)
 
-        Array.from(items).forEach((item) => {
-            item.classList.remove('hide')
-        })
+    searchParamsOfPage() {
+        const url = new URL(location.href)
+        const searchParams = url.searchParams
+        return searchParams
     }
 }
+
 
 const __main = function () {
     log('__main run')
@@ -160,9 +159,9 @@ const __main = function () {
     // if (isIosSystem()) {
     //     instance = FaceAuthenticationIOS.new()
     // } else {
-    //     instance = FaceAuthenticationAndroid.new()
+    //     instance = FaceAuthentication.new()
     // }
-    instance = FaceAuthenticationAndroid.new()
+    instance = FaceAuthentication.new()
     instance.init()
 }
 
