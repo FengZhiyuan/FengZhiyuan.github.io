@@ -85,3 +85,13 @@ h1 {
 .text-align-center {
     text-align: center;
 }
+
+.wrapper-android {
+}
+
+.wrapper-ios {
+}
+
+.hide {
+    display: none;
+}

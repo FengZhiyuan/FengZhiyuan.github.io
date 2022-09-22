@@ -11,9 +11,6 @@
         <link rel="stylesheet" href="css/index.css">
         <script src="js/utils.js"></script>
         <script src="js/rem.js"></script>
-<!--        layui -->
-<!--        <script src="https://layui.itze.cn/layui-v2.6.8/layui/layui.js"></script>-->
-<!--        <link rel="stylesheet" href="https://layui.itze.cn/layui-v2.6.8/layui/css/layui.css">-->
     </head>
 
     <body>
@@ -25,9 +22,13 @@
             <div class="div-subtitle">人脸身份验证</div>
 
             <div class="div-main">
-                <div class="div-video-wrapper">
-                    <video id="video" width="320" height="320"></video>
+                <div class="div-video-wrapper wrapper-android">
+                    <video id="video" width="320" height="320" muted playsinline></video>
                 </div>
+
+<!--                <div class="wrapper-ios">-->
+<!--                    <input type="file" id='image' accept="image/*" capture='user'>-->
+<!--                </div>-->
 
                 <div class="div-button-wrapper">
                     <button id="id-js-button-snap">拍照识别</button>
