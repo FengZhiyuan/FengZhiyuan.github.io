@@ -59,7 +59,7 @@ h1 {
 
 .div-button-wrapper {
     margin: 0.6rem 0;
-    padding: 0 1rem;
+    /*padding: 0 1rem;*/
 }
 
 #id-button-sign-in, #id-button-snap{

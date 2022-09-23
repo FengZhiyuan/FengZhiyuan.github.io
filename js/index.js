@@ -86,6 +86,109 @@ class Base {
     }
 }
 
+class Main extends Base {
+    constructor() {
+        super()
+        this.expertList = []
+        this.selectedExpert = null
+        this.instanceOfFacepp = null
+    }
+
+    init() {
+        this.setTitle()
+        this.getExpertInfo()
+        this.bindEvents()
+    }
+
+    setTitle() {
+        const urlParams = this.getParamsFromUrl()
+        const title = urlParams.get('projectName') || '项目人脸认证'
+        $e('.h1-page-title').innerText = title
+    }
+
+    bindEvents() {
+        this.bindEventButtonSignInClick()
+        this.bindEventButtonGoBackClick()
+    }
+
+    bindEventSelectExpertChange() {
+        layui.use(['layer','jquery','form'],function(){
+            var layer = layui. layer,
+                $=layui.jquery,
+                form=layui.form;
+            form.on('select(select-expert)', function (data) {
+                $e('#id-input-expert-idcard').value = data.value
+            });
+        });
+    }
+
+    bindEventButtonSignInClick() {
+        const button = $e('#id-button-sign-in')
+        button.addEventListener('click', (event) => {
+            const name = $e('#id-expert-name').value
+            if (!name) {
+                this.showMessage('请选择专家')
+                return
+            }
+            const idCard = $e('#id-input-expert-idcard').value
+            const obj = {
+                expertTrueName: name,
+                expertCertNum: idCard,
+            }
+            const target = this.expertList.find(item => item.expertCertNum === obj.expertCertNum) || {}
+            this.selectedExpert = target
+            this.changePageToFaceAuthentication()
+        })
+    }
+
+    bindEventButtonGoBackClick() {
+        const button = $e('#id-button-back')
+        button.addEventListener('click', (event) => {
+            this.changePageToHome()
+        })
+    }
+
+    getExpertInfo() {
+        this.showLoading()
+        const urlParams = this.getParamsFromUrl()
+        const request = {
+            //todo mock
+            url: 'http://127.0.0.1:3000/ess/review/manage/getExpertAttestation',
+            method: 'GET',
+            data: {
+                reviewId: urlParams.get('reviewId'),
+                expertUserId: urlParams.get('expertUserId'),
+            },
+        }
+        Ajax(request).then(res => {
+            log('getExpertAttestation', res)
+            this.expertList = res
+            this.insertExpertOptions()
+        }).finally(() => {
+            this.hideLoading()
+        })
+    }
+
+    insertExpertOptions() {
+        const elementSelect = $e('#id-expert-name')
+        const optionsHtml = this.expertList.map(item => {
+            const html = `<option value = ${item.expertCertNum}>${item.expertTrueName}</option>`
+            return html
+        })
+
+        if (this.expertList.length === 1) {
+            const expert = this.expertList[0]
+            $e('#id-input-expert-idcard').value = expert.expertCertNum
+            elementSelect.innerHTML = optionsHtml.join('\n')
+        } else {
+            elementSelect.innerHTML = `<option value="">请选择评委</option>\n` + optionsHtml.join('\n')
+        }
+
+        layui.form.render('select')
+        this.bindEventSelectExpertChange()
+    }
+}
+
 class FaceAuthentication extends Base {
     constructor(instanceOfMain) {
         super()
@@ -216,95 +319,6 @@ class FaceAuthentication extends Base {
             // todo dev
             this.changePageToSuccess()
         })
-    }
-}
-
-class Main extends Base {
-    constructor() {
-        super()
-        this.expertList = []
-        this.selectedExpert = null
-        this.instanceOfFacepp = null
-    }
-
-    init() {
-        this.setTitle()
-        this.getExpertInfo()
-        this.bindEvents()
-    }
-
-    setTitle() {
-        const urlParams = this.getParamsFromUrl()
-        const title = urlParams.get('projectName') || '项目人脸认证'
-        $e('.h1-page-title').innerText = title
-    }
-
-    bindEvents() {
-        this.bindEventButtonSignInClick()
-        this.bindEventButtonGoBackClick()
-    }
-
-    bindEventSelectExpertChange() {
-        layui.use(['layer','jquery','form'],function(){
-            var layer = layui. layer,
-                $=layui.jquery,
-                form=layui.form;
-            form.on('select(select-expert)', function (data) {
-                $e('#id-input-expert-idcard').value = data.value
-            });
-        });
-    }
-
-    bindEventButtonSignInClick() {
-        const button = $e('#id-button-sign-in')
-        button.addEventListener('click', (event) => {
-            const name = $e('#id-expert-name').value
-            if (!name) {
-                this.showMessage('请选择专家')
-                return
-            }
-            const idCard = $e('#id-input-expert-idcard').value
-            const obj = {
-                expertTrueName: name,
-                expertCertNum: idCard,
-            }
-            const target = this.expertList.find(item => item.expertCertNum === obj.expertCertNum) || {}
-            this.selectedExpert = target
-            this.changePageToFaceAuthentication()
-        })
-    }
-
-    bindEventButtonGoBackClick() {
-        const button = $e('#id-button-back')
-        button.addEventListener('click', (event) => {
-            this.changePageToHome()
-        })
-    }
-
-    getExpertInfo() {
-        this.showLoading()
-        const request = {
-            //todo mock
-            url: 'http://127.0.0.1:3000/ess/review/manage/getExpertAttestation',
-            method: 'GET',
-        }
-        Ajax(request).then(res => {
-            log('getExpertAttestation', res)
-            this.expertList = res
-            this.insertExpertOptions()
-        }).finally(() => {
-            this.hideLoading()
-        })
-    }
-
-    insertExpertOptions() {
-        const optionsHtml = this.expertList.map(item => {
-            const html = `<option value = ${item.expertCertNum}>${item.expertTrueName}</option>`
-            return html
-        })
-        $e('#id-expert-name').innerHTML = `<option value="">请选择评委</option>\n` + optionsHtml.join('\n')
-        layui.form.render('select')
-        this.bindEventSelectExpertChange()
     }
 }
 
