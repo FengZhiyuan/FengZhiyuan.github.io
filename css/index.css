@@ -17,12 +17,13 @@ h1 {
     font-size: 0.6rem;
 }
 
-.div-face-authentication {
+.div-face-authentication-page {
     padding-top: 1rem;
 }
 
 .h1-page-title {
-
+    padding: 0 0.8rem;
+    margin-bottom: 2rem;
 }
 
 .div-subtitle {
@@ -53,17 +54,21 @@ h1 {
 
 .div-button-wrapper {
     margin: 0.6rem 0;
+    padding: 0 1rem;
 }
 
-#id-js-button-snap{
-    width: 8rem;
-    height:1rem;
-    line-height:1rem;
+#id-button-sign-in, #id-button-snap{
+    margin-bottom: 0.25rem;
     background: #D20A10;
     border: #D20A10;
-    border-radius: 3px;
-    font-size: 0.4rem;
     color: #fff;
+}
+
+#id-button-back {
+    margin-bottom: 0.25rem;
+    background-color: #fff;
+    color: #000;
+    border-color: #aaa;
 }
 
 #photo{
@@ -80,6 +85,17 @@ h1 {
 #text{
     width:320px;
     height:200px;
+}
+
+.div-success-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    font-size: 1rem;
+    text-align: center;
+    color: #67C23A;
 }
 
 .dev {

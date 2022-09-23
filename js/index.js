@@ -26,10 +26,11 @@ function showSize(base64url) {
 class Base {
     constructor() {
         this.load = null
+        this.urlParams = null
     }
 
-    static new() {
-        return new this()
+    static new(...args) {
+        return new this(...args)
     }
 
     showMessage(message)  {
@@ -38,6 +39,7 @@ class Base {
             layer.msg(message)
         })
     }
+
     showLoading() {
         this.load = layer.load(1, {
             content: '',
@@ -48,47 +50,63 @@ class Base {
     hideLoading() {
         layer.close(this.load)
     }
+
+    changePageToFaceAuthentication() {
+        $e('.div-home-form').classList.add('hide')
+        $e('.div-face-authentication').classList.remove('hide')
+
+        if (!this.instanceOfFacepp) {
+            const instance = FaceAuthentication.new(this)
+            instance.init()
+            this.instanceOfFacepp = instance
+        }
+    }
+
+    changePageToHome() {
+        $e('.div-home-form').classList.remove('hide')
+        $e('.div-face-authentication').classList.add('hide')
+    }
+
+    changePageToSuccess() {
+        $e('.div-home-form').classList.add('hide')
+        $e('.div-face-authentication').classList.add('hide')
+        $e('.div-success').classList.remove('hide')
+    }
+
+    getParamsFromUrl() {
+        const url = new URL(window.location.href)
+        const search = url.search.slice(1)
+        //
+        const decodeSearch = decodeURIComponent(window.atob(search))
+        const newUrl = new URL(location.origin + location.pathname + '?' + decodeSearch)
+        const searchParams = newUrl.searchParams
+        log("newUrl ", newUrl)
+
+        return searchParams
+    }
 }
 
 class FaceAuthentication extends Base {
-    constructor() {
+    constructor(instanceOfMain) {
         super()
         this.canvas = document.getElementById("canvas")
         this.context = this.canvas.getContext("2d")
         this.video = document.getElementById("video")
-        this.width = 320
-        this.height= 240
+        //
+        this.instanceOfMain = instanceOfMain
+        this.photoData = ""
     }
 
     init() {
-        // this.setup()
-
-        window.onload = () => {
-            try {
-                // 动态创建一个canvas元 ，并获取他2Dcontext。如果出现异常则表示不支持
-                document.createElement("canvas").getContext("2d")
-                //
-                this.bindEvents()
-                this.initCamera()
-            }
-            catch (e) {
-                document.getElementById("support").innerHTML = "浏览器不支持HTML5 CANVAS"
-            }
+        try {
+            // 动态创建一个canvas元 ，并获取他2Dcontext。如果出现异常则表示不支持
+            document.createElement("canvas").getContext("2d")
+            //
+            this.bindEvents()
+            this.initCamera()
         }
-    }
-
-    setup() {
-        const url = new URL(location.href)
-        const searchParams = url.searchParams
-
-        const width = searchParams.get('width')
-        if (width) {
-            this.width = width
-        }
-
-        const height = searchParams.get('height')
-        if (height) {
-            this.height = height
+        catch (e) {
+            document.getElementById("support").innerHTML = "浏览器不支持HTML5 CANVAS"
         }
     }
 
@@ -111,7 +129,7 @@ class FaceAuthentication extends Base {
     }
 
     bindEventSnap() {
-        document.getElementById("id-js-button-snap").onclick = () => {
+        document.getElementById("id-button-snap").onclick = () => {
             this.takePhoto()
             // layer.msg('拍照完成')
         }
@@ -135,11 +153,13 @@ class FaceAuthentication extends Base {
         }
         //
         const imgData = this.canvas.toDataURL('image/jpeg', quality)
+        this.photoData = imgData
 
         const size = showSize(imgData)
         document.getElementById("photo").style.backgroundImage = `url(${imgData})`
 
         $e ('.input-test').value = `${this.video.videoWidth} * ${this.video.videoHeight}, ${size}KB`
+        this.verifyRequest()
     }
 
     playVideoByStream(stream) {
@@ -171,6 +191,32 @@ class FaceAuthentication extends Base {
         const searchParams = url.searchParams
         return searchParams
     }
+
+    verifyRequest() {
+        this.showLoading()
+        const expert = this.instanceOfMain.selectedExpert
+        const data = {
+            expertId: expert.id,
+            attestationType: "1", // 1-人脸识别， 2-线下认证
+            imgStrBase64: this.photoData,
+            expertCertNum: expert.expertCertNum,
+        }
+        const request = {
+            url: '/ess/review/manage/attestation',
+            method: 'POST',
+            data: data
+        }
+
+        Ajax(request).then((response) => {
+            this.showMessage('认证成功')
+        }).catch((error) => {
+            this.showMessage('认证失败')
+        }).finally(() => {
+            this.hideLoading()
+            // todo dev
+            this.changePageToSuccess()
+        })
+    }
 }
 
 class Main extends Base {
@@ -178,15 +224,24 @@ class Main extends Base {
         super()
         this.expertList = []
         this.selectedExpert = null
+        this.instanceOfFacepp = null
     }
 
     init() {
+        this.setTitle()
         this.getExpertInfo()
         this.bindEvents()
     }
 
+    setTitle() {
+        const urlParams = this.getParamsFromUrl()
+        const title = urlParams.get('projectName') || '项目人脸认证'
+        $e('.h1-page-title').innerText = title
+    }
+
     bindEvents() {
         this.bindEventButtonSignInClick()
+        this.bindEventButtonGoBackClick()
     }
 
     bindEventSelectExpertChange() {
@@ -195,7 +250,6 @@ class Main extends Base {
                 $=layui.jquery,
                 form=layui.form;
             form.on('select(select-expert)', function (data) {
-                log('select expert change run', data)
                 $e('#id-input-expert-idcard').value = data.value
             });
         });
@@ -215,8 +269,15 @@ class Main extends Base {
                 expertCertNum: idCard,
             }
             const target = this.expertList.find(item => item.expertCertNum === obj.expertCertNum) || {}
-            log("target ", target)
             this.selectedExpert = target
+            this.changePageToFaceAuthentication()
+        })
+    }
+
+    bindEventButtonGoBackClick() {
+        const button = $e('#id-button-back')
+        button.addEventListener('click', (event) => {
+            this.changePageToHome()
         })
     }
 
@@ -241,7 +302,6 @@ class Main extends Base {
             const html = `<option value = ${item.expertCertNum}>${item.expertTrueName}</option>`
             return html
         })
-        log("optionsHtml ", optionsHtml)
         $e('#id-expert-name').innerHTML = `<option value="">请选择专家</option>\n` + optionsHtml.join('\n')
         layui.form.render('select')
         this.bindEventSelectExpertChange()
@@ -249,8 +309,6 @@ class Main extends Base {
 }
 
 const __main = function () {
-    log('__main run')
-
     const main = Main.new()
     main.init()
 

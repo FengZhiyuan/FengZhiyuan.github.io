@@ -15,57 +15,61 @@
     </head>
 
     <body>
-        <h5 id="support"></h5>
-        <h1 class="h1-page-title text-align-center">xx项目</h1>
+        <div class="div-face-authentication-page">
+            <h5 id="support"></h5>
 
-        <div class="div-home-form text-align-center">
-            <form class="layui-form" action="">
-                <div class="layui-form-item">
-                    <label class="layui-form-label label-text">评委名称：</label>
-                    <div class="layui-input-block">
-                        <select id="id-expert-name" lay-filter="select-expert"></select>
+            <h1 class="h1-page-title text-align-center">xx项目</h1>
+
+            <div class="div-home-form text-align-center">
+                <form class="layui-form" action="">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label label-text">评委名称：</label>
+                        <div class="layui-input-block">
+                            <select id="id-expert-name" lay-filter="select-expert"></select>
+                        </div>
                     </div>
-                </div>
 
-                <div class="layui-form-item">
-                    <label class="layui-form-label label-text">评委身份证号码：</label>
-                    <div class="layui-input-block">
-                        <input id="id-input-expert-idcard" type="text" name="title" placeholder="请输入份证号码" autocomplete="off" class="layui-input">
+                    <div class="layui-form-item">
+                        <label class="layui-form-label label-text">评委身份证号码：</label>
+                        <div class="layui-input-block">
+                            <input id="id-input-expert-idcard" type="text" name="title" placeholder="请输入份证号码" autocomplete="off" class="layui-input">
+                        </div>
                     </div>
-                </div>
-
-            </form>
-
-            <div>
-
-
-
-                <div>
-                    <button id="id-button-sign-in" type="button" class="layui-btn layui-btn-normal">签到</button>
-                </div>
-            </div>
-        </div>
-
-
-        <div class="div-face-authentication text-align-center hide">
-
-            <div class="div-subtitle">人脸身份验证</div>
-
-
-
-            <div class="div-main">
-                <div class="div-video-wrapper">
-                    <video id="video" width="375" height="375" muted playsinline></video>
-                </div>
+                </form>
 
                 <div class="div-button-wrapper">
-                    <button id="id-js-button-snap">拍照识别</button>
-                    <input class="input-test" />
+                    <button id="id-button-sign-in" type="button" class="layui-btn layui-btn-fluid">签到</button>
                 </div>
+            </div>
 
-                <canvas id="canvas" style="display:none"></canvas>
+            <div class="div-face-authentication text-align-center hide">
 
-                <div id="photo"></div>
+                <div class="div-subtitle">人脸身份验证</div>
+
+                <div class="div-main">
+                    <div class="div-video-wrapper">
+                        <video id="video" width="375" height="375" muted playsinline></video>
+                    </div>
+
+                    <div class="div-button-wrapper">
+                        <div>
+                            <button id="id-button-snap" type="button" class="layui-btn layui-btn-fluid">拍照识别</button>
+                        </div>
+                        <button id="id-button-back" type="button" class="layui-btn layui-btn-fluid">返回</button>
+                        <input class="input-test" />
+                    </div>
+
+                    <canvas id="canvas" style="display:none"></canvas>
+
+                    <div id="photo"></div>
+                </div>
+            </div>
+
+            <div class="div-success hide">
+                <div class="div-success-text">
+                    <i class="layui-icon layui-icon-auz" style="font-size: 1rem; color: #67C23A;"></i>
+                    认证成功
+                </div>
             </div>
         </div>
 
