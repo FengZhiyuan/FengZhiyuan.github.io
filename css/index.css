@@ -89,3 +89,15 @@ h1 {
 .text-align-center {
     text-align: center;
 }
+
+.label-text {
+    font-size: 0.4rem;
+}
+
+.hide {
+    display: none;
+}
+
+.active {
+    display: block;
+}

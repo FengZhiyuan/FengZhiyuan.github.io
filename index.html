@@ -11,15 +11,47 @@
         <link rel="stylesheet" href="css/index.css">
         <script src="js/utils.js"></script>
         <script src="js/rem.js"></script>
+        <link rel="stylesheet" href="js/css/layui.css">
     </head>
 
     <body>
         <h5 id="support"></h5>
+        <h1 class="h1-page-title text-align-center">xx项目</h1>
 
-        <div class="div-face-authentication text-align-center">
-            <h1 class="h1-page-title">xx项目</h1>
+        <div class="div-home-form text-align-center">
+            <form class="layui-form" action="">
+                <div class="layui-form-item">
+                    <label class="layui-form-label label-text">评委名称：</label>
+                    <div class="layui-input-block">
+                        <select id="id-expert-name" lay-filter="select-expert"></select>
+                    </div>
+                </div>
+
+                <div class="layui-form-item">
+                    <label class="layui-form-label label-text">评委身份证号码：</label>
+                    <div class="layui-input-block">
+                        <input id="id-input-expert-idcard" type="text" name="title" placeholder="请输入份证号码" autocomplete="off" class="layui-input">
+                    </div>
+                </div>
+
+            </form>
+
+            <div>
+
+
+
+                <div>
+                    <button id="id-button-sign-in" type="button" class="layui-btn layui-btn-normal">签到</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="div-face-authentication text-align-center hide">
 
             <div class="div-subtitle">人脸身份验证</div>
+
+
 
             <div class="div-main">
                 <div class="div-video-wrapper">
@@ -37,6 +69,7 @@
             </div>
         </div>
 
+        <script src="js/layui.js"></script>
         <script src="js/index.js"></script>
     </body>
 </html>

@@ -24,8 +24,29 @@ function showSize(base64url) {
 }
 
 class Base {
+    constructor() {
+        this.load = null
+    }
+
     static new() {
         return new this()
+    }
+
+    showMessage(message)  {
+        layui.use('layer', function(){
+            const layer = layui.layer
+            layer.msg(message)
+        })
+    }
+    showLoading() {
+        this.load = layer.load(1, {
+            content: '',
+            shade: [0.4, '#393D49'],
+        })
+    }
+
+    hideLoading() {
+        layer.close(this.load)
     }
 }
 
@@ -118,7 +139,7 @@ class FaceAuthentication extends Base {
         const size = showSize(imgData)
         document.getElementById("photo").style.backgroundImage = `url(${imgData})`
 
-        $('.input-test').value = `${this.video.videoWidth} * ${this.video.videoHeight}, ${size}KB`
+        $e ('.input-test').value = `${this.video.videoWidth} * ${this.video.videoHeight}, ${size}KB`
     }
 
     playVideoByStream(stream) {
@@ -133,7 +154,8 @@ class FaceAuthentication extends Base {
 
     playVideoError(error) {
         // Display a friendly "sorry" message to the user
-        alert('错误代码: [CODE ' + error.code + ']')
+        log('错误代码: [CODE ' + error.code + ']')
+        // alert('错误代码: [CODE ' + error.code + ']')
     }
 
     isIosSystem() {
@@ -151,18 +173,90 @@ class FaceAuthentication extends Base {
     }
 }
 
+class Main extends Base {
+    constructor() {
+        super()
+        this.expertList = []
+        this.selectedExpert = null
+    }
+
+    init() {
+        this.getExpertInfo()
+        this.bindEvents()
+    }
+
+    bindEvents() {
+        this.bindEventButtonSignInClick()
+    }
+
+    bindEventSelectExpertChange() {
+        layui.use(['layer','jquery','form'],function(){
+            var layer = layui. layer,
+                $=layui.jquery,
+                form=layui.form;
+            form.on('select(select-expert)', function (data) {
+                log('select expert change run', data)
+                $e('#id-input-expert-idcard').value = data.value
+            });
+        });
+    }
+
+    bindEventButtonSignInClick() {
+        const button = $e('#id-button-sign-in')
+        button.addEventListener('click', (event) => {
+            const name = $e('#id-expert-name').value
+            if (!name) {
+                this.showMessage('请选择专家')
+                return
+            }
+            const idCard = $e('#id-input-expert-idcard').value
+            const obj = {
+                expertTrueName: name,
+                expertCertNum: idCard,
+            }
+            const target = this.expertList.find(item => item.expertCertNum === obj.expertCertNum) || {}
+            log("target ", target)
+            this.selectedExpert = target
+        })
+    }
+
+    getExpertInfo() {
+        this.showLoading()
+        const request = {
+            //todo mock
+            url: 'http://127.0.0.1:3000/ess/review/manage/getExpertAttestation',
+            method: 'GET',
+        }
+        Ajax(request).then(res => {
+            log('getExpertAttestation', res)
+            this.expertList = res
+            this.insertExpertOptions()
+        }).finally(() => {
+            this.hideLoading()
+        })
+    }
+
+    insertExpertOptions() {
+        const optionsHtml = this.expertList.map(item => {
+            const html = `<option value = ${item.expertCertNum}>${item.expertTrueName}</option>`
+            return html
+        })
+        log("optionsHtml ", optionsHtml)
+        $e('#id-expert-name').innerHTML = `<option value="">请选择专家</option>\n` + optionsHtml.join('\n')
+        layui.form.render('select')
+        this.bindEventSelectExpertChange()
+    }
+}
 
 const __main = function () {
     log('__main run')
 
-    let instance
-    // if (isIosSystem()) {
-    //     instance = FaceAuthenticationIOS.new()
-    // } else {
-    //     instance = FaceAuthentication.new()
-    // }
-    instance = FaceAuthentication.new()
-    instance.init()
+    const main = Main.new()
+    main.init()
+
+    // let instance
+    // instance = FaceAuthentication.new()
+    // instance.init()
 }
 
 __main()

@@ -1,6 +1,6 @@
 const log = console.log.bind(console)
 
-const $ = document.querySelector.bind(document)
+const $e = document.querySelector.bind(document)
 
 const Ajax = function(request) {
     let req = {
@@ -24,11 +24,19 @@ const Ajax = function(request) {
         })
         r.onreadystatechange = function() {
             if (r.readyState === 4) {
-                let res = r.response
-                // 回调函数
-                req.callback(res)
-                // Promise 成功
-                resolve(res)
+                try {
+                    let res = JSON.parse(r.response)
+                    if (res.code === 200) {
+                        // 回调函数
+                        req.callback(res.data)
+                        // Promise 成功
+                        resolve(res.data)
+                    } else {
+                        reject(r.response)
+                    }
+                } catch (e) {
+                    reject(e)
+                }
             }
         }
         r.onerror = function (err) {
