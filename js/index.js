@@ -302,7 +302,7 @@ class Main extends Base {
             const html = `<option value = ${item.expertCertNum}>${item.expertTrueName}</option>`
             return html
         })
-        $e('#id-expert-name').innerHTML = `<option value="">请选择专家</option>\n` + optionsHtml.join('\n')
+        $e('#id-expert-name').innerHTML = `<option value="">请选择评委</option>\n` + optionsHtml.join('\n')
         layui.form.render('select')
         this.bindEventSelectExpertChange()
     }

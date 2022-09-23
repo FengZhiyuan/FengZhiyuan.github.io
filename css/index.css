@@ -21,9 +21,14 @@ h1 {
     padding-top: 1rem;
 }
 
+.div-content-container {
+    padding: 0 0.54rem;
+    text-align: center;
+}
+
 .h1-page-title {
     padding: 0 0.8rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .div-subtitle {
@@ -106,8 +111,11 @@ h1 {
     text-align: center;
 }
 
-.label-text {
-    font-size: 0.4rem;
+.div-form-item-label {
+    text-align: left;
+    font-size: 0.45rem;
+    margin-bottom: 0.14rem;
+    color: #666;
 }
 
 .hide {
@@ -116,4 +124,8 @@ h1 {
 
 .active {
     display: block;
+}
+
+.layui-input-block {
+    margin-left: 0!important;
 }
