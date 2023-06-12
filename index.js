@@ -72,11 +72,17 @@ const bindEventCell = () => {
     }
 }
 
-// 点击id="button-refresh"的按钮，刷新页面
+// 点击id="button-refresh"的按钮，清空row1、row2 内的所有内容，重新初始化
 const bindEventRefresh = () => {
     const button = document.querySelector('#button-refresh')
     button.addEventListener('click', (event) => {
-        window.location.reload()
+        const row1 = document.querySelector("#row1")
+        const row2 = document.querySelector("#row2")
+        row1.innerHTML = ''
+        row2.innerHTML = ''
+        insertDivs(row1, '1')
+        insertDivs(row2, '2')
+        bindEventCell()
     })
 }
 
