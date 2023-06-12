@@ -1,79 +1,76 @@
-<!doctype html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>html5 调用摄像头 demo</title>
-        <meta content="" name="Keywords" />
-        <meta content="" name="Description"/>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
-        <meta name="format-detection" content="telephone=no, email=no">
-        <meta name="HandheldFriendly" content="true" />
-        <link rel="stylesheet" href="css/index.css">
-        <script src="js/utils.js"></script>
-        <script src="js/rem.js"></script>
-        <link rel="stylesheet" href="js/css/layui.css">
-    </head>
+<!DOCTYPE html>
 
-    <body>
-        <div class="div-face-authentication-page">
-            <h5 id="support"></h5>
+<html lang="en">
 
-            <h1 class="h1-page-title text-align-center">xx项目</h1>
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<!--    这是移动端页面，增加移动端的 meta-->
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+</head>
 
-            <div class="div-home-form div-content-container text-align-center">
-                <form class="layui-form" action="">
-                    <div class="div-form-item-label">评委名称：</div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <select id="id-expert-name" lay-filter="select-expert"></select>
-                        </div>
-                    </div>
+<body>
+<div id="container">
+    <style>
+        #row1, #row2 {
+            /*height: 50px;*/
+            margin-top: 20px;
+        }
+        .cell {
+            display: inline-block;
+            width: 17%;
+            height: 80px;
+            line-height: 80px;
+            border: 1px solid #000;
+            margin: 1%;
+            text-align: center;
+            vertical-align: middle;
+            font-size: 20px;
+        }
+        .item {
+            display: inline-block;
+            width: 100%;
+            height: 100px;
+            border: 1px solid #f00;
+        }
+        .item-di {
+            background-color: #0f0;
+        }
+        .item-shui {
+            background-color: #25a1e7;
+        }
+        .item-huo {
+            background-color: #f00;
+        }
+        .item-feng {
+            background-color: #ff0;
+        }
+        #button-refresh {
+            height: 50px;
+            width: 100%;
+            line-height: 50px;
+            border-radius: 5px;
+            margin-top: 20px;
+            background: #2d8cf0;
+            font-size: 18px;
+            color: #fff;
+        }
+    </style>
 
-                    <div class="div-form-item-label">评委身份证号码：</div>
-                    <div class="layui-form-item">
-                        <div class="layui-input-block">
-                            <input id="id-input-expert-idcard" type="text" name="title" placeholder="请输入份证号码" autocomplete="off" class="layui-input">
-                        </div>
-                    </div>
-                </form>
 
-                <div class="div-button-wrapper">
-                    <button id="id-button-sign-in" type="button" class="layui-btn layui-btn-fluid">签到</button>
-                </div>
-            </div>
 
-            <div class="div-face-authentication div-content-container text-align-center hide">
+    <div id="row1"></div>
 
-                <div class="div-subtitle">人脸身份验证</div>
+    <div id="row2"></div>
 
-                <div class="div-main">
-                    <div class="div-video-wrapper">
-                        <video id="video" width="375" height="375" muted playsinline></video>
-                    </div>
+    <div>
+        <button id="button-refresh">刷新</button>
+    </div>
 
-                    <div class="div-button-wrapper">
-                        <div>
-                            <button id="id-button-snap" type="button" class="layui-btn layui-btn-fluid">拍照识别</button>
-                        </div>
-                        <button id="id-button-back" type="button" class="layui-btn layui-btn-fluid">返回</button>
-                        <input class="input-test" />
-                    </div>
+</div>
 
-                    <canvas id="canvas" style="display:none"></canvas>
 
-                    <div id="photo"></div>
-                </div>
-            </div>
+  <script src="./index.js"></script>
+</body>
 
-            <div class="div-success hide">
-                <div class="div-success-text">
-                    <i class="layui-icon layui-icon-auz" style="font-size: 1rem; color: #67C23A;"></i>
-                    认证成功
-                </div>
-            </div>
-        </div>
-
-        <script src="js/layui.js"></script>
-        <script src="js/index.js"></script>
-    </body>
 </html>
